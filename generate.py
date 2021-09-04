@@ -17,29 +17,33 @@ with open("source.csv") as source_file:
     # create the dist folder if it does not exist
     pathlib.Path("./dist").mkdir(exist_ok=True)
 
+    # we will need to save the max number of attributes
+    max_attrs = 0
+
     # iterate through the csv lines
     for line, row in enumerate(csvr):
         # the first line is ignored, since it is the header
         if line == 0:
+            max_attrs = len(row)
             continue
 
         base = csv_name_to_filename(row[0])
-        attr_1 = csv_name_to_filename(row[1]) if len(row) >= 2 else ""
-        attr_2 = csv_name_to_filename(row[2]) if len(row) >= 3 else ""
+        attr_list = []
 
-        print(f"Generating with [{base}], [{attr_1}], [{attr_2}]")
+        # try to get all the attributes for the line
+        for idx in range(1, max_attrs):
+            if idx < len(row):
+                attr_list.append(csv_name_to_filename(row[idx]))
+
+        print(f"Generating with [{base}], [{'], ['.join(attr_list)}]")
 
         # open the base image
         base_img = Image.open(f"images/{base}.png")
 
         # and if there are attributes, we paste the image on top of base
         # https://stackoverflow.com/a/5324782
-        if attr_1:
-            attr_img = Image.open(f"images/{attr_1}.png")
-            base_img.paste(attr_img, (0, 0), attr_img.convert("RGBA"))
-
-        if attr_2:
-            attr_img = Image.open(f"images/{attr_2}.png")
+        for attr in attr_list:
+            attr_img = Image.open(f"images/{attr}.png")
             base_img.paste(attr_img, (0, 0), attr_img.convert("RGBA"))
 
         # save the image, and also a 4x size, because 24px is so small
