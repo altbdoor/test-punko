@@ -27,15 +27,13 @@ with open("source.csv") as source_file:
             max_attrs = len(row)
             continue
 
+        # get the base filename
         base = csv_name_to_filename(row[0])
-        attr_list = []
 
-        # try to get all the attributes for the line
-        for idx in range(1, max_attrs):
-            if idx < len(row):
-                attr_list.append(csv_name_to_filename(row[idx]))
+        # get all the attributes for the base
+        attr_list = [csv_name_to_filename(attr) for attr in row[1:]]
 
-        print(f"Generating with [{base}], [{'], ['.join(attr_list)}]")
+        print(f"Generating with [{base}] and, [{'], ['.join(attr_list)}]")
 
         # open the base image
         base_img = Image.open(f"images/{base}.png")
