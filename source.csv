@@ -1,0 +1,26 @@
+type,       attribute1,   attribute2
+Classic,    3D Glasses
+Classic,    Beanie
+Classic,    Cap,          Regular Shades
+Classic,    Cowboy Hat
+Classic,    Eye Patch
+Classic,    Knitted Cap
+Classic,    Nerd Glasses
+Classic,    Big Shades
+Classic,    Knitted Cap,  Regular Shades
+Classic
+Dark,       Tiara
+Dark,       Big Shades
+Dark,       3D Glasses
+Dark,       Classic Shades
+Dark,       Cap
+Dark,       Cap,          Regular Shades
+Dark,       Tiara,        Big Shades
+Zombie,     Knitted Cap
+Zombie,     Eye Patch
+Zombie,     Regular Shades
+Zombie,     Knitted Cap,  Regular Shades
+Zombie
+Alien,      Cap,          Small Shades
+Alien,      Headband
+Alien,      Classic Shades
