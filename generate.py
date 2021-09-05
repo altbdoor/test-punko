@@ -60,7 +60,10 @@ def run_generate(csv_path: Path, images_path: Path, dist_path: Path, extra_size:
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description=("Compiles images based on CSV file"),
+        description=(
+            "Compiles PNG images with layers specified in a CSV file. "
+            "Somewhat suitable for generating pixel art punko."
+        ),
         formatter_class=argparse.RawTextHelpFormatter,
     )
 
